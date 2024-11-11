@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin tức - Macxay</title>
+</head>
+<body>
+    <!-- Tiêu đề chính -->
+    <h1>Tin tức mới nhất</h1>
+    <p>Cập nhật những tin tức mới nhất về Macxay và ngành công nghiệp của chúng tôi.</p>
+
+    <!-- Thanh điều hướng -->
+    <nav>
+        <a href="{% url 'home' %}">Trang chủ</a> |
+        <a href="{% url 'about' %}">Giới thiệu</a> |
+        <a href="{% url 'contact' %}">Liên hệ</a> |
+        <a href="{% url 'services' %}">Dịch vụ</a> |
+        <a href="{% url 'products' %}">Sản phẩm</a> |
+        <a href="{% url 'news' %}">Tin tức</a>
+    </nav>
+
+    <!-- Tin tức nổi bật -->
+    <section id="news">
+        <h2>Các bài viết mới nhất</h2>
+        {% for item in tin_tuc %}
+            <h3>{{ item.tieu_de }}</h3>
+            <p>{{ item.noi_dung }}</p>
+            {% if item.hinh_anh %}
+                <img src="{{ item.hinh_anh.url }}" alt="{{ item.tieu_de }}">
+            {% endif %}
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Macxay. Mọi quyền được bảo lưu.</p>
+    </footer>
+</body>
+</html>

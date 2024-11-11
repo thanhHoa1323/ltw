@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch vụ - Macxay</title>
+</head>
+<body>
+    <!-- Tiêu đề chính -->
+    <h1>Dịch vụ của Macxay</h1>
+    <p>Chúng tôi cung cấp các dịch vụ chất lượng cao, đáp ứng nhu cầu của khách hàng trong nhiều lĩnh vực khác nhau.</p>
+
+    <!-- Thanh điều hướng -->
+    <nav>
+        <a href="{% url 'home' %}">Trang chủ</a> |
+        <a href="{% url 'about' %}">Giới thiệu</a> |
+        <a href="{% url 'contact' %}">Liên hệ</a> |
+        <a href="{% url 'services' %}">Dịch vụ</a> |
+        <a href="{% url 'products' %}">Sản phẩm</a> |
+        <a href="{% url 'news' %}">Tin tức</a>
+    </nav>
+
+    <!-- Dịch vụ -->
+    <section id="services">
+        <h2>Các dịch vụ của chúng tôi</h2>
+        {% for service in dich_vu %}
+            <div class="service-item">
+                <h3>{{ service.ten_dich_vu }}</h3>
+                <p>{{ service.mo_ta }}</p>
+                {% if service.hinh_anh %}
+                    <img src="{{ service.hinh_anh.url }}" alt="{{ service.ten_dich_vu }}">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Macxay. Mọi quyền được bảo lưu.</p>
+    </footer>
+</body>
+</html>

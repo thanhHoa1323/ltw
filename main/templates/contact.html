@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Macxay</title>
+</head>
+<body>
+    <!-- Tiêu đề chính -->
+    <h1>Liên hệ với chúng tôi</h1>
+    <p>Chúng tôi luôn sẵn sàng tiếp nhận mọi câu hỏi và yêu cầu của bạn.</p>
+
+    <!-- Thanh điều hướng -->
+    <nav>
+        <a href="{% url 'home' %}">Trang chủ</a> |
+        <a href="{% url 'about' %}">Giới thiệu</a> |
+        <a href="{% url 'contact' %}">Liên hệ</a> |
+        <a href="{% url 'services' %}">Dịch vụ</a> |
+        <a href="{% url 'products' %}">Sản phẩm</a> |
+        <a href="{% url 'news' %}">Tin tức</a>
+    </nav>
+
+    <!-- Thông tin liên hệ -->
+    <section id="contact-info">
+        <h2>Thông tin liên hệ</h2>
+        {% for item in lien_he %}
+            <p>{{ item.ten }}</p>
+            <p>{{ item.noi_dung }}</p>
+            {% if item.hinh_anh %}
+                <img src="{{ item.hinh_anh.url }}" alt="{{ item.ten }}">
+            {% endif %}
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Macxay. Mọi quyền được bảo lưu.</p>
+    </footer>
+</body>
+</html>

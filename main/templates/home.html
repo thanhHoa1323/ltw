@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - Macxay</title>
+</head>
+<body>
+    <!-- Tiêu đề chính -->
+    <h1>Chào mừng đến với Macxay!</h1>
+    <p>Macxay là công ty tiên phong trong lĩnh vực cung cấp các sản phẩm và dịch vụ chất lượng cao. Chúng tôi cam kết mang đến giải pháp tốt nhất cho khách hàng.</p>
+
+    <!-- Thanh điều hướng -->
+    <nav>
+        <a href="{% url 'home' %}">Trang chủ</a> |
+        <a href="{% url 'about' %}">Giới thiệu</a> |
+        <a href="{% url 'contact' %}">Liên hệ</a> |
+        <a href="{% url 'services' %}">Dịch vụ</a> |
+        <a href="{% url 'products' %}">Sản phẩm</a> |
+        <a href="{% url 'news' %}">Tin tức</a>
+    </nav>
+
+    <!-- Giới thiệu về chúng tôi -->
+    <section id="about">
+        <h2>Giới thiệu về chúng tôi</h2>
+        {% for item in gioi_thieu %}
+            <h3>{{ item.ten }}</h3>
+            <p>{{ item.noi_dung }}</p>
+            {% if item.hinh_anh %}
+                <img src="{{ item.hinh_anh.url }}" alt="{{ item.ten }}">
+            {% endif %}
+        {% endfor %}
+    </section>
+
+    <!-- Dịch vụ và Sản phẩm -->
+    <section id="services-products">
+        <h2>Dịch vụ và Sản phẩm</h2>
+        <ul>
+            {% for item in dich_vu %}
+                <li>{{ item.ten }}: {{ item.mo_ta }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Sản phẩm nổi bật</h3>
+        <ul>
+            {% for item in san_pham %}
+                <li>{{ item.ten }} - Giá: {{ item.gia }} VND</li>
+                {% if item.hinh_anh %}
+                    <img src="{{ item.hinh_anh.url }}" alt="{{ item.ten }}">
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Tin tức nổi bật -->
+    <section id="news">
+        <h2>Tin tức nổi bật</h2>
+        {% for item in tin_tuc %}
+            <h3>{{ item.tieu_de }}</h3>
+            <p>{{ item.noi_dung }}</p>
+            {% if item.hinh_anh %}
+                <img src="{{ item.hinh_anh.url }}" alt="{{ item.tieu_de }}">
+            {% endif %}
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Macxay. Mọi quyền được bảo lưu.</p>
+    </footer>
+</body>
+</html>

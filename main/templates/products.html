@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm - Macxay</title>
+</head>
+<body>
+    <!-- Tiêu đề chính -->
+    <h1>Sản phẩm của Macxay</h1>
+    <p>Chúng tôi cung cấp các sản phẩm công nghệ cao đáp ứng nhu cầu đa dạng của khách hàng.</p>
+
+    <!-- Thanh điều hướng -->
+    <nav>
+        <a href="{% url 'home' %}">Trang chủ</a> |
+        <a href="{% url 'about' %}">Giới thiệu</a> |
+        <a href="{% url 'contact' %}">Liên hệ</a> |
+        <a href="{% url 'services' %}">Dịch vụ</a> |
+        <a href="{% url 'products' %}">Sản phẩm</a> |
+        <a href="{% url 'news' %}">Tin tức</a>
+    </nav>
+
+    <!-- Sản phẩm -->
+    <section id="products">
+        <h2>Các sản phẩm nổi bật</h2>
+        {% for product in san_pham %}
+            <div class="product-item">
+                <h3>{{ product.ten_san_pham }}</h3>
+                <p>{{ product.mo_ta }}</p>
+                <p>Giá: {{ product.gia }}</p>
+                {% if product.hinh_anh %}
+                    <img src="{{ product.hinh_anh.url }}" alt="{{ product.ten_san_pham }}">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Macxay. Mọi quyền được bảo lưu.</p>
+    </footer>
+</body>
+</html>
